@@ -1,12 +1,6 @@
 pipeline {
   agent none
   stages {
-     stage('Checkout') {
-      agent any
-      steps {
-        git 'https://github.com/Praj0496/jenkins-Docker-project.git'
-      }
-    }
     stage('Back-end') {
       agent {
         docker { image 'node:16-alpine' }
