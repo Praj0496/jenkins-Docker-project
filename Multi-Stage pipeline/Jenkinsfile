@@ -22,7 +22,7 @@ pipeline {
       steps {
         script {
           // Build the Docker image
-          def appImage = docker.build("web-app", "-f Multi-Stage pipeline/Dockerfile .")
+          def appImage = docker.build("web-app", "-f 'Multi-Stage pipeline/Dockerfile' .")
 
           // Run the Docker container, exposing port 80
           appImage.run("-p 80:90 --name my-webapp-container")
