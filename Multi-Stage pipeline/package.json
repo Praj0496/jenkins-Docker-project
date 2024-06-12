@@ -6,8 +6,6 @@
   "scripts": {
     "start": "node web-app.js"
   },
-  "dependencies": {
-    {}
-  }
+  "dependencies": {}
 }
 
