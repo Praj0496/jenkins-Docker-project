@@ -1,1 +1,13 @@
+{
+  "name": "web-app",
+  "version": "1.0.0",
+  "description": "Web application deployed on Docker container",
+  "main": "web-app.js",
+  "scripts": {
+    "start": "node web-app.js"
+  },
+  "dependencies": {
+    {}
+  }
+}
 
