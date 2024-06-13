@@ -59,6 +59,3 @@ pipeline {
     }
   }
 }
-```
-
-With `reuseNode true`, the Docker container will be reused for each stage that declares the same Docker image. After the pipeline is finished, the Docker container will be stopped but not removed. You can then list the containers using the `docker ps -a` command on your instance. If you have any other questions, feel free to ask! 😊
