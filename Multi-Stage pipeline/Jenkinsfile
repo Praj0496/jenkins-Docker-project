@@ -5,6 +5,9 @@ pipeline {
       agent any
       steps {
         script {
+          // Print the current directory
+                    sh 'pwd'
+          
           // Build the Docker image
           def appImage = docker.build("web-app", "-f 'Multi-Agent-Deploy\\ pipeline/Multi-Stage pipeline/Dockerfile' .")
 
