@@ -17,12 +17,6 @@ pipeline {
         sh 'mvn --version'
       }
     }
-    stage('Checkout') {
-      agent any
-      steps {
-              checkout scm
-            }
-        }
     stage('Build Docker Image') {
       agent any
       steps {
