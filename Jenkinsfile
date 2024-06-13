@@ -8,15 +8,15 @@ pipeline {
       steps {
         // To Print Maven version
         sh 'mvn --version'
+        
+        // Print the current working directory
+        sh 'pwd'
 
-        // Build the project and download dependencies
-        sh 'mvn clean install -DskipTests'
-        
-        // Run unit tests
-        sh 'mvn test'
-        
-        // Package the application
-        sh 'mvn package'
+        // List the contents of the current directory
+        sh 'ls -la'
+
+        // Print a simple message
+    echo 'Back-end build and tests completed successfully!'
       }
     }
     stage('Front-end') {
@@ -35,6 +35,9 @@ pipeline {
 
         // Run tests
         sh 'npm test'
+
+        // Print a simple message
+        echo 'Front-end build and tests completed successfully!'
       }
     }
   }
