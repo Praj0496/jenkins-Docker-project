@@ -17,12 +17,18 @@ pipeline {
         sh 'mvn --version'
       }
     }
+    stage('Checkout') {
+      agent any
+      steps {
+              checkout scm
+            }
+        }
     stage('Build Docker Image') {
       agent any
       steps {
         script {
           // Build the Docker image
-          def appImage = docker.build("web-app", "-f 'Multi-Stage pipeline/Dockerfile' .")
+          def appImage = docker.build("web-app", "-f 'jenkins-Docker-project/Multi-Stage pipeline/Dockerfile' .")
 
           // Run the Docker container, exposing port 80
           appImage.run("-p 80:90 --name my-webapp-container")
