@@ -3,7 +3,11 @@ pipeline {
   stages {
     stage('Back-end') {
       agent {
-        docker { image 'maven:3.8.1-adoptopenjdk-11' }
+        docker {
+          image 'maven:3.8.1-adoptopenjdk-11'
+          reuseNode true                           // After the pipeline is finished, the Docker container will be stopped but not removed.This allows you to      
+                                                   // inspect the container after the pipeline execution. 
+        }
       }
       steps {
         // To Print Maven version
@@ -25,12 +29,16 @@ pipeline {
         sh 'ls -la'
 
         // Print a simple message
-    echo 'Back-end build and tests completed successfully!'
+        echo 'Back-end build and tests completed successfully!'
       }
     }
     stage('Front-end') {
       agent {
-        docker { image 'node:16-alpine' }
+        docker {
+          image 'node:16-alpine'
+          reuseNode true                // After the pipeline is finished, the Docker container will be stopped but not removed.This allows you to      
+                                                   // inspect the container after the pipeline execution.
+        }
       }
       steps {
         // To print node version
@@ -51,3 +59,6 @@ pipeline {
     }
   }
 }
+```
+
+With `reuseNode true`, the Docker container will be reused for each stage that declares the same Docker image. After the pipeline is finished, the Docker container will be stopped but not removed. You can then list the containers using the `docker ps -a` command on your instance. If you have any other questions, feel free to ask! 😊
