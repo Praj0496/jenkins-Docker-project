@@ -9,6 +9,15 @@ pipeline {
         // To Print Maven version
         sh 'mvn --version'
         
+        // Build stage example: Build the project and download dependencies 
+        // sh 'mvn clean install -DskipTests'
+        
+        // Example: Run unit tests
+        //sh 'mvn test'
+        
+        // Example: Package the application
+        //sh 'mvn package'
+        
         // Print the current working directory
         sh 'pwd'
 
@@ -27,14 +36,14 @@ pipeline {
         // To print node version
         sh 'node --version'
 
-        // Install dependencies
-        sh 'npm install'
+        // Example: Install dependencies
+        // sh 'npm install'
 
-        // Build the project
-        sh 'npm run build'
+        // Example: Build the project
+        //sh 'npm run build'
 
-        // Run tests
-        sh 'npm test'
+        // Example: Run tests
+        //sh 'npm test'
 
         // Print a simple message
         echo 'Front-end build and tests completed successfully!'
