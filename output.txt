@@ -1,0 +1,128 @@
+Started by user Prajwal
+Obtained Jenkinsfile from git https://github.com/Praj0496/jenkins-Docker-project.git
+[Pipeline] Start of Pipeline
+[Pipeline] stage
+[Pipeline] { (Back-end)
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/jenkins-Docker-project
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential git_key
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/jenkins-Docker-project/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Praj0496/jenkins-Docker-project.git # timeout=10
+Fetching upstream changes from https://github.com/Praj0496/jenkins-Docker-project.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials Git repo credentials
+ > git fetch --tags --force --progress -- https://github.com/Praj0496/jenkins-Docker-project.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 4f9e9ddecc8cbaaba82269047647088b58a693f0 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 4f9e9ddecc8cbaaba82269047647088b58a693f0 # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk 617dcc292f1f98e52a5d428a0e80f804e5ae112a # timeout=10
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . maven:3.8.1-adoptopenjdk-11
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 111:113 -w /var/lib/jenkins/workspace/jenkins-Docker-project -v /var/lib/jenkins/workspace/jenkins-Docker-project:/var/lib/jenkins/workspace/jenkins-Docker-project:rw,z -v /var/lib/jenkins/workspace/jenkins-Docker-project@tmp:/var/lib/jenkins/workspace/jenkins-Docker-project@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** maven:3.8.1-adoptopenjdk-11 cat
+$ docker top 5574cc88546a6569f2c4adf317a425ddf3d0fb898b3a2af266b8362b8f2daa8e -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ mvn --version
+Apache Maven 3.8.1 (05c21c65bdfed0f71a2f2ada8b84da59348c4c5d)
+Maven home: /usr/share/maven
+Java version: 11.0.11, vendor: AdoptOpenJDK, runtime: /opt/java/openjdk
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "6.8.0-1008-aws", arch: "amd64", family: "unix"
+[Pipeline] sh
++ pwd
+/var/lib/jenkins/workspace/jenkins-Docker-project
+[Pipeline] sh
++ ls -la
+total 32
+drwxr-xr-x 5  111  113 4096 Jun 13 13:24 .
+drwxr-xr-x 4 root root 4096 Jun 13 13:24 ..
+drwxr-xr-x 3  111  113 4096 Jun 13 12:38 ?
+drwxr-xr-x 8  111  113 4096 Jun 13 13:24 .git
+-rw-r--r-- 1  111  113 1225 Jun 13 13:24 Jenkinsfile
+-rw-r--r-- 1  111  113  101 Jun 13 13:11 package-lock.json
+-rw-r--r-- 1  111  113   53 Jun 13 12:19 README.md
+drwxr-xr-x 2  111  113 4096 Jun 13 12:19 Test-pipeline
+[Pipeline] echo
+Back-end build and tests completed successfully!
+[Pipeline] }
+$ docker stop --time=1 5574cc88546a6569f2c4adf317a425ddf3d0fb898b3a2af266b8362b8f2daa8e
+$ docker rm -f --volumes 5574cc88546a6569f2c4adf317a425ddf3d0fb898b3a2af266b8362b8f2daa8e
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Front-end)
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/jenkins-Docker-project
+[Pipeline] {
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+using credential git_key
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/jenkins-Docker-project/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/Praj0496/jenkins-Docker-project.git # timeout=10
+Fetching upstream changes from https://github.com/Praj0496/jenkins-Docker-project.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+using GIT_ASKPASS to set credentials Git repo credentials
+ > git fetch --tags --force --progress -- https://github.com/Praj0496/jenkins-Docker-project.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 4f9e9ddecc8cbaaba82269047647088b58a693f0 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 4f9e9ddecc8cbaaba82269047647088b58a693f0 # timeout=10
+Commit message: "Update Jenkinsfile"
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] isUnix
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ docker inspect -f . node:16-alpine
+.
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] withDockerContainer
+Jenkins does not seem to be running inside a container
+$ docker run -t -d -u 111:113 -w /var/lib/jenkins/workspace/jenkins-Docker-project -v /var/lib/jenkins/workspace/jenkins-Docker-project:/var/lib/jenkins/workspace/jenkins-Docker-project:rw,z -v /var/lib/jenkins/workspace/jenkins-Docker-project@tmp:/var/lib/jenkins/workspace/jenkins-Docker-project@tmp:rw,z -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** -e ******** node:16-alpine cat
+$ docker top c66b195f95dfc17692d89e984cbb194a563496b98a395ecccffa6ecc4d1df541 -eo pid,comm
+[Pipeline] {
+[Pipeline] sh
++ node --version
+v16.20.2
+[Pipeline] echo
+Front-end build and tests completed successfully!
+[Pipeline] }
+$ docker stop --time=1 c66b195f95dfc17692d89e984cbb194a563496b98a395ecccffa6ecc4d1df541
+$ docker rm -f --volumes c66b195f95dfc17692d89e984cbb194a563496b98a395ecccffa6ecc4d1df541
+[Pipeline] // withDockerContainer
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+Finished: SUCCESS
