@@ -5,8 +5,6 @@ pipeline {
       agent {
         docker {
           image 'maven:3.8.1-adoptopenjdk-11'
-          reuseNode true                           // After the pipeline is finished, the Docker container will be stopped but not removed.This allows you to      
-                                                   // inspect the container after the pipeline execution. 
         }
       }
       steps {
@@ -36,8 +34,6 @@ pipeline {
       agent {
         docker {
           image 'node:16-alpine'
-          reuseNode true                // After the pipeline is finished, the Docker container will be stopped but not removed.This allows you to      
-                                                   // inspect the container after the pipeline execution.
         }
       }
       steps {
